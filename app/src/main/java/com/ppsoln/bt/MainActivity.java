@@ -13,9 +13,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     Button Btn;
+    TextView mTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
         registerReceiver(mReceiver,filter);
         Btn = (Button)findViewById(R.id.btn_click);
+        mTextView = (TextView)findViewById(R.id.tv_Main);
         Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("This",action);
                 if (device.getBondState() != BluetoothDevice.BOND_BONDED) {
                     Log.e("This",device.getName() + "\n" + device.getAddress());
+                    mTextView.append(device.getName() + "\n" + device.getAddress() +"\n");
                 }
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
                 Log.e("This",action);
