@@ -15,9 +15,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
-//    BluetoothAdapter mbtAdapter;
     Button Btn;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +23,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
         registerReceiver(mReceiver,filter);
-//        filter = new IntentFilter(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
-//        registerReceiver(mReceiver, filter);
-//        mbtAdapter = BluetoothAdapter.getDefaultAdapter();
         Btn = (Button)findViewById(R.id.btn_click);
         Btn.setOnClickListener(new View.OnClickListener() {
             @Override
